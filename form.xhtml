@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:c="http://java.sun.com/jstl/core"
-	  lang="pt-br">
+<!DOCTYPE >
+<html>
     <body>
         
         <ui:composition template="template/template.xhtml">
             
             <ui:define name="titulo">
-                Fechar Pedido - Novo Usuário
+                Fechar Pedido - Novo UsuÃ¡rio
             </ui:define>
 
             <ui:define name="conteudo">
     
 			   <div id="checkout">
 		            <fieldset>
-			            <legend>Formulário do Usuário</legend> 
+			            <legend>FormulÃ¡rio do UsuÃ¡rio</legend> 
 			            
 			            <span jsfc="h:messages" globalOnly="true" 
 			            	errorClass="global-error"></span>
@@ -48,7 +43,7 @@
 		    	        		styleClass="field" required="true" />
 			            <span jsfc="h:message" for="senha" styleClass="msg"></span>
 			            <br />
-		    	        <label jsfc="h:outputLabel" for="endereco">Endereço:</label>
+		    	        <label jsfc="h:outputLabel" for="endereco">EndereÃ§o:</label>
 		    	        <input jsfc="h:inputText" type="text" id="endereco"
 		    	        		value="#{usuarioController.usuario.endereco}" 
 		    	        		styleClass="field" required="true" 
@@ -80,7 +75,7 @@
 		    	        <span jsfc="h:message" for="cep" styleClass="msg"></span>		
 			            <br />
 			            <span style="color: #FF0000">*</span> 
-			            Seu e-mail será usado como login (nome de usuário).
+			            Seu e-mail serÃ¡ usado como login (nome de usuÃ¡rio).
 			            <br />
 			            <br />
 			            <input jsfc="h:commandButton" type="submit" 
