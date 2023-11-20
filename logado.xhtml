@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://java.sun.com/jstl/core"
+	  lang="pt-br">
+    <body>
+        
+        <ui:composition template="/template/template.xhtml">
+            
+            <ui:define name="titulo">
+               Área do Usuário
+            </ui:define>
+
+            <ui:define name="conteudo">
+            <div id="account">
+            	<fieldset>
+		            <legend>Área do Usuário - #{usuarioController.usuario.nome}</legend>
+		             <span jsfc="h:messages" globalOnly="true"></span>
+		             <div  id="user-menu">
+		             <ul>
+		             <li>
+		            
+			            <a jsfc="h:commandLink" 
+			            	action="#{usuarioController.logout}" 
+			            	immediate="true">
+			            	
+			            	Logout
+			            </a>
+		            </li>
+		            <li>
+			            <a jsfc="h:commandLink" 
+			            	action="atualiza" 
+			            	immediate="true">
+			            	
+			            	Atualizar Dados
+			            </a>
+		            </li>
+		            </ul>
+		            </div>
+	            </fieldset>
+            <c:if test="#{carrinhoController.qtdProdutosAdicionados > 0}">
+
+			   <fieldset>
+			       <legend>Suas Compras</legend> 
+				<h:panelGrid columns="1" styleClass="box">
+				
+				<table jsfc="h:dataTable" id="cartTable" 
+					value="#{carrinhoController.carrinho}" var="item" 
+					cellpadding="0" cellspacing="0" 
+				 	headerClass="shop-cart-header" 
+				 	columnClasses="col-a, col-b, col-c, col-d"
+				 	>
+					<tr>
+                        <td jsfc="h:column">
+                        	<f:facet name="header">
+                        		Descrição
+                        	</f:facet>
+				      		#{item.produto.prodNome}  		
+                        </td>
+     				  	<td jsfc="h:column">
+						  <f:facet name="header">
+						  	Quantidade
+						  </f:facet>
+						  #{item.qtd}
+						</td>
+					  	<td jsfc="h:column">
+					  		<f:facet name="header">
+					  			Preço Unitário
+					  		</f:facet>
+					    	<h:outputText 
+					    		value="#{item.produto.preco-(item.produto.preco*item.produto.desconto)/100}">
+					      		<f:convertNumber type="currency"/>
+					    	</h:outputText> 
+					  	</td>				  
+				  
+				  		<td jsfc="h:column">
+				  			<f:facet name="header">
+				  				Total Parcial
+							</f:facet>
+					    	<h:outputText value="#{item.subTotal}">
+					      		<f:convertNumber type="currency"/>
+					    	</h:outputText> 
+				  		</td>      
+                  </tr>
+				</table>
+				<br />
+				<table jsfc="h:panelGrid" columns="4"> 
+				  <tr>
+				  <td>
+				  <h:outputText value="Total à Pagar: "/>
+				  </td>
+				  <td>
+					  <h:outputText value="#{carrinhoController.car.total}" 
+					  	style="font-weight:bold">
+						<f:convertNumber type="currency"/>
+					  </h:outputText>
+				  </td>
+				  </tr>
+				</table> 
+				</h:panelGrid>
+				</fieldset>
+			
+			            <fieldset>
+			            <legend>Sua Conta</legend> 
+			            <dl>
+							<dt>
+			            		<label jsfc="h:outputLabel" for="ccNome">
+			            			Nome no Cartão:
+			            		</label>
+			            	</dt>
+			            	<dd>
+				    	        <input jsfc="h:inputText"  id="ccNome" 
+				    	        		value="#{usuarioController.pedido.ccNome}"
+				    	        		 required="true"  />
+				    	        		 
+				    	        <span jsfc="h:message" for="ccNome"></span>	
+		    	        	</dd>	
+			            	<dt>
+		    	        		<label jsfc="h:outputLabel" for="ccTipo">
+		    	        			Tipo de Cartão:
+		    	        		</label>
+		    	        	</dt>
+		    	        	<dd>
+				    	        <select jsfc="h:selectOneMenu" id="ccTipo" 
+				    	        		  value="#{usuarioController.pedido.ccTipo}" >
+				    	        	<option jsfc="f:selectItem" 
+				    	        		itemValue="1"  itemLabel="Visa"></option>
+				    	        	<option jsfc="f:selectItem" 
+				    	        		itemValue="2" itemLabel="Master Card"></option>
+				    	        	<option jsfc="f:selectItem" 
+				    	        		itemValue="3" itemLabel="AMEX"></option>	
+				    	        </select>
+				    	        <span jsfc="h:message" for="ccTipo"></span>	
+		    	        	</dd>	
+			            	<dt>				    	        						    	        		
+		    	        		<label jsfc="h:outputLabel" for="ccNumero">
+		    	        			Número:
+		    	        		</label>
+		    	        	</dt>
+		    	        	<dd>		    	        		
+		    	        		<h:inputText id="ccNumero"  
+		    	        			value="#{usuarioController.pedido.ccNumero}"
+		    	        		 	required="true"
+		    	        		 	validatorMessage="Formato: 9999-9999-9999-9999,com '-' ou espaço">
+		    	        		 	<f:validator validatorId="validaCartao" />
+		    	        		</h:inputText>
+		    	        		<span jsfc="h:message" for="ccNumero"></span> 	
+		    	        	</dd>	
+			            	<dt>		    	        		 		
+		    	        		<label jsfc="h:outputLabel" for="ccMExp">
+		    	        			Validade:
+		    	        		</label>
+		    	        	</dt>
+		    	        	<dd>		    	        		
+				    	        <input jsfc="h:inputText"  id="ccMExp"  
+				    	        	value="#{usuarioController.pedido.ccMExp}"
+				    	        	size="2"	 required="true"  /> / 
+				    	        <input jsfc="h:inputText"  id="ccAExp"  
+				    	       		value="#{usuarioController.pedido.ccAExp}"
+				    	        	size="2"	 required="true"  />		          
+			            		<span jsfc="h:message" for="ccMExp"></span>
+		    	        	</dd>	
+			            </dl>
+			            <input jsfc="h:commandButton" type="submit" 
+			            		action="#{usuarioController.finalizaCompra}"
+			            		id="confirmar" value="Confirmar"/>
+		            </fieldset>           	
+			
+			
+				</c:if>
+    		</div>
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>

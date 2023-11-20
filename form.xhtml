@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://java.sun.com/jstl/core"
+	  lang="pt-br">
+    <body>
+        
+        <ui:composition template="template/template.xhtml">
+            
+            <ui:define name="titulo">
+                Fechar Pedido - Novo Usuário
+            </ui:define>
+
+            <ui:define name="conteudo">
+    
+			   <div id="checkout">
+		            <fieldset>
+			            <legend>Formulário do Usuário</legend> 
+			            
+			            <span jsfc="h:messages" globalOnly="true" 
+			            	errorClass="global-error"></span>
+						<br />
+			            <label jsfc="h:outputLabel" for="nome">Nome:</label>
+		    	        <input jsfc="h:inputText" type="text" id="nome" 
+		    	        		value="#{usuarioController.usuario.nome}" 
+		    	        		styleClass="field" required="true" 
+		    	        		size="30" />
+		    	        <span jsfc="h:message" for="nome" styleClass="msg"></span>		
+			            <br />
+		    	        <label jsfc="h:outputLabel" for="email">
+		    	        	E-mail <span style="color: #FF0000">*</span>:
+		    	        </label>
+		    	        <input jsfc="h:inputText" type="text" id="email" 
+		    	        		value="#{usuarioController.usuario.email}"
+		    	        		styleClass="field" required="true" 
+		    	        		validator="#{usuarioController.validaEmail}" 
+		    	        		readonly="#{not empty usuarioController.usuario.email}"
+		    	        		size="30"
+		    	        		/>
+		    	        <span jsfc="h:message" for="email" styleClass="msg"></span>		
+			            <br />
+		    	        <label jsfc="h:outputLabel" for="senha">Senha:</label>
+		    	        <input jsfc="h:inputText" id="senha" 
+		    	        		value="#{usuarioController.usuario.senha}"
+		    	        		styleClass="field" required="true" />
+			            <span jsfc="h:message" for="senha" styleClass="msg"></span>
+			            <br />
+		    	        <label jsfc="h:outputLabel" for="endereco">Endereço:</label>
+		    	        <input jsfc="h:inputText" type="text" id="endereco"
+		    	        		value="#{usuarioController.usuario.endereco}" 
+		    	        		styleClass="field" required="true" 
+		    	        		size="30" />
+		    	        <span jsfc="h:message" for="endereco" styleClass="msg"></span>		
+			            <br />			            
+		    	        <label jsfc="h:outputLabel" for="bairro">Bairro:</label>
+		    	        <input jsfc="h:inputText" type="text" id="bairro"
+		    	        		value="#{usuarioController.usuario.bairro}" 
+		    	        		styleClass="field" required="true"  />
+		    	        <span jsfc="h:message" for="bairro" styleClass="msg"></span>		
+			            <br />		            
+		    	        <label jsfc="h:outputLabel" for="cidade">Cidade:</label>
+		    	        <input jsfc="h:inputText" type="text" id="cidade"
+		    	        		value="#{usuarioController.usuario.cidade}" 
+		    	        		styleClass="field" required="true"  />
+		    	        <span jsfc="h:message" for="cidade" styleClass="msg"></span>		
+			            <br />				            
+		    	        <label jsfc="h:outputLabel" for="estado">Estado:</label>
+		    	        <input jsfc="h:inputText" type="text" id="estado" size="2"
+		    	        		value="#{usuarioController.usuario.estado}"
+		    	        		styleClass="field" required="true"  />
+		    	        <span jsfc="h:message" for="estado" styleClass="msg"></span>		
+			            <br />
+		    	        <label jsfc="h:outputLabel" for="cep">CEP:</label>
+		    	        <input jsfc="h:inputText" type="text" id="cep" 
+		    	        		value="#{usuarioController.usuario.cep}"
+		    	        		styleClass="field" required="true" size="9"  />
+		    	        <span jsfc="h:message" for="cep" styleClass="msg"></span>		
+			            <br />
+			            <span style="color: #FF0000">*</span> 
+			            Seu e-mail será usado como login (nome de usuário).
+			            <br />
+			            <br />
+			            <input jsfc="h:commandButton" type="submit" 
+			            		action="#{usuarioController.salvar}"
+			            		id="confirmar" value="Confirmar"/>
+		            </fieldset>           
+			    </div>
+    
+    
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>

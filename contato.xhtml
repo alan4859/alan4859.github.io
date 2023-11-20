@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://java.sun.com/jstl/core"
+	  lang="pt-br">
+    <body>
+        
+        <ui:composition template="template/template.xhtml">
+            
+            <ui:define name="titulo">
+               Fale Conosco
+            </ui:define>
+
+            <ui:define name="conteudo">
+            <div id="checkout">
+        
+  
+	            <fieldset>
+			            <legend>Fale Conosco</legend> 
+			           
+			            <span jsfc="h:messages" globalOnly="true">
+			            </span>
+						<br />
+			            <label jsfc="h:outputLabel" for="nome">Nome *:</label>
+		    	        <input jsfc="h:inputText" type="text" id="nome" 
+		    	        		value="#{contatoController.nome}" 
+		    	        		styleClass="field" required="true" size="25"
+		    	        		requiredMessage="*" />
+		    	        <span jsfc="h:message" for="nome" styleClass="msg"></span>		
+			            <br />
+		    	        <label jsfc="h:outputLabel" for="email">
+		    	        	E-mail *:
+		    	        </label>
+		    	        <input jsfc="h:inputText" type="text" id="email" 
+		    	        		value="#{contatoController.email}"
+		    	        		styleClass="field" required="true" size="25"
+		    	        		requiredMessage="*" />
+		    	        <span jsfc="h:message" for="email" styleClass="msg"></span>		
+		
+			            <br />
+		    	        <label jsfc="h:outputLabel" for="assunto">Assunto *:</label>
+		    	        <input jsfc="h:inputText" type="text" id="assunto" 
+		    	        		value="#{contatoController.assunto}"
+		    	        		styleClass="field" required="true" size="25"
+		    	        		requiredMessage="*" />
+		    	        <span jsfc="h:message" for="assunto" styleClass="msg"></span>		
+			            <br />
+		    	        <label jsfc="h:outputLabel" for="mensagem">Mensagem *:</label>
+		    	        <textarea jsfc="h:inputTextarea" cols="20" rows="5"
+		    	        		type="text" id="mensagem" 
+		    	        		value="#{contatoController.mensagem}"
+		    	        		styleClass="field" required="true" size="9"
+		    	        		requiredMessage="*">
+		    	        </textarea>
+		    	        <span jsfc="h:message" for="mensagem" styleClass="msg"></span>		
+			            <br />			
+			            <span>Todos os campos com * são obrigatórios</span> 
+			            <br />           
+			            <br />
+			            <input jsfc="h:commandButton" type="submit" 
+			            		action="#{contatoController.enviar}"
+			            		id="confirmar" value="Confirmar"/>
+		            </fieldset>           				
+	
+  
+
+			</div>
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>
