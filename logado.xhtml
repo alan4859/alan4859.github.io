@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:c="http://java.sun.com/jstl/core"
-	  lang="pt-br">
+<!DOCTYPE >
+<html>
     <body>
         
         <ui:composition template="/template/template.xhtml">
             
             <ui:define name="titulo">
-               Área do Usuário
+               Ãrea do UsuÃ¡rio
             </ui:define>
 
             <ui:define name="conteudo">
             <div id="account">
             	<fieldset>
-		            <legend>Área do Usuário - #{usuarioController.usuario.nome}</legend>
+		            <legend>Ãrea do UsuÃ¡rio - #{usuarioController.usuario.nome}</legend>
 		             <span jsfc="h:messages" globalOnly="true"></span>
 		             <div  id="user-menu">
 		             <ul>
@@ -56,7 +51,7 @@
 					<tr>
                         <td jsfc="h:column">
                         	<f:facet name="header">
-                        		Descrição
+                        		DescriÃ§Ã£o
                         	</f:facet>
 				      		#{item.produto.prodNome}  		
                         </td>
@@ -68,7 +63,7 @@
 						</td>
 					  	<td jsfc="h:column">
 					  		<f:facet name="header">
-					  			Preço Unitário
+					  			PreÃ§o UnitÃ¡rio
 					  		</f:facet>
 					    	<h:outputText 
 					    		value="#{item.produto.preco-(item.produto.preco*item.produto.desconto)/100}">
@@ -90,7 +85,7 @@
 				<table jsfc="h:panelGrid" columns="4"> 
 				  <tr>
 				  <td>
-				  <h:outputText value="Total à Pagar: "/>
+				  <h:outputText value="Total Ã  Pagar: "/>
 				  </td>
 				  <td>
 					  <h:outputText value="#{carrinhoController.car.total}" 
@@ -108,7 +103,7 @@
 			            <dl>
 							<dt>
 			            		<label jsfc="h:outputLabel" for="ccNome">
-			            			Nome no Cartão:
+			            			Nome no CartÃ£o:
 			            		</label>
 			            	</dt>
 			            	<dd>
@@ -120,7 +115,7 @@
 		    	        	</dd>	
 			            	<dt>
 		    	        		<label jsfc="h:outputLabel" for="ccTipo">
-		    	        			Tipo de Cartão:
+		    	        			Tipo de CartÃ£o:
 		    	        		</label>
 		    	        	</dt>
 		    	        	<dd>
@@ -137,14 +132,14 @@
 		    	        	</dd>	
 			            	<dt>				    	        						    	        		
 		    	        		<label jsfc="h:outputLabel" for="ccNumero">
-		    	        			Número:
+		    	        			NÃºmero:
 		    	        		</label>
 		    	        	</dt>
 		    	        	<dd>		    	        		
 		    	        		<h:inputText id="ccNumero"  
 		    	        			value="#{usuarioController.pedido.ccNumero}"
 		    	        		 	required="true"
-		    	        		 	validatorMessage="Formato: 9999-9999-9999-9999,com '-' ou espaço">
+		    	        		 	validatorMessage="Formato: 9999-9999-9999-9999,com '-' ou espaÃ§o">
 		    	        		 	<f:validator validatorId="validaCartao" />
 		    	        		</h:inputText>
 		    	        		<span jsfc="h:message" for="ccNumero"></span> 	
