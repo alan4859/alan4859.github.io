@@ -1,11 +1,6 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:c="http://java.sun.com/jstl/core"
-	  lang="pt-br">
+
+<!DOCTYPE >
+<html >
     <body>
         
 <ui:composition template="template/template.xhtml">
@@ -33,7 +28,7 @@
 			 
 			    <h:panelGroup>
 			      <h:outputText 
-			      		value="#{item.desconto > 0 ? 'Lista:':'Preço:'}" 
+			      		value="#{item.desconto > 0 ? 'Lista:':'PreÃ§o:'}" 
 			      		styleClass="text"/>
 			      <h:outputText value="#{item.preco}"  
 			      		styleClass="#{item.desconto > 0 ? 'listprice':'text'}">
@@ -41,7 +36,7 @@
 			      </h:outputText>
 			    </h:panelGroup>
 			    <h:panelGroup rendered="#{item.desconto>0}">
-			      <h:outputText value="Preço:" styleClass="text"/>
+			      <h:outputText value="PreÃ§o:" styleClass="text"/>
 			      <h:outputText 
 			      		value="#{item.preco-(item.preco*item.desconto)/100}"  
 			      		styleClass="price">
