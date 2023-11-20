@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:c="http://java.sun.com/jstl/core"
-	  lang="pt-br">
+<!DOCTYPE >
+<html>
     <body>
         
 <ui:composition template="template/template.xhtml">
@@ -18,9 +13,9 @@
 	<div id="cart">
 		<c:choose>
 			<c:when 
-				test="#{carrinhoController.qtdProdutosAdicionados &lt;= 0}">
+				test="#{}">
 				 
-				Seu Carrinho está vazio.
+				Seu Carrinho estÃ¡ vazio.
 				<a href="home.jsf">
 					Clique aqui para comprar.
 				</a>
@@ -40,7 +35,7 @@
                        					
 						<td jsfc="h:column">
                         	<f:facet name="header">
-                        		Descrição
+                        		DescriÃ§Ã£o
                         	</f:facet>
 				    		<h:outputLink  
 				    				value="detalhes.jsf?id=#{item.produto.id}">
@@ -57,7 +52,7 @@
 						</td>
 					  	<td jsfc="h:column">
 					  		<f:facet name="header">
-					  			Preço Unitário
+					  			PreÃ§o UnitÃ¡rio
 					  		</f:facet>
 					    	<h:outputText 
 value="#{item.produto.preco-(item.produto.preco*item.produto.desconto)/100}">
