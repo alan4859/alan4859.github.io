@@ -1,4 +1,4 @@
-/* CSS Document */
+/* estilos */
 html {
 	height:100%;
 	margin: 0px 0px 1px 0px;
@@ -401,7 +401,7 @@ body {
 #right #cart{
 	padding-bottom: 10px;
 }
-/*determina o tamanho da tabela do carrinho na p·gina carrinho*/
+/*determina o tamanho da tabela do carrinho na p√°gina carrinho*/
 #right #cart table{
 	width: 470px;
 }
