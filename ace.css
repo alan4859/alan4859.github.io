@@ -1,0 +1,120 @@
+/* a c e */
+
+body {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	background-color: #ffffff;
+}
+
+div.header {
+	background-color: #103099;
+	color: #ffffff;
+	width: 100%;
+	font-family: verdana, tahoma, sans-serif;
+	font-size: 20pt;
+	text-align: right;
+	font-weight: bold;
+	font-style: italic;
+	padding-top: 3px;
+	padding-right: 10px;
+	padding-bottom: 3px;
+
+}
+
+div.main {
+	background-color: #ffffff;
+	color: #000000;
+	width: 100%;
+	font-family: verdana, tahoma, sans-serif;
+	padding-top: 3px;
+	padding-left: 5px;
+	padding-bottom: 3px;
+	margin-top: 10px;
+}
+
+div.menubox {
+	background-color: #ffffff;
+	color: #103099;		;
+	border-right: thin solid #103099;
+	border-bottom: thick solid #103099;
+	border-left: thin solid #103099;
+	text-align: justify;
+	margin-bottom: 10px;
+	padding-top: 0px;
+	padding-bottom: 3px;
+	padding-left: 0px;
+	padding-right: 0px;
+	font-size: 10pt;
+}
+div.linkbox {
+	background-color: #ffffff;
+	color: #103099;		;
+	border-right: thin solid #103099;
+	border-bottom: thick solid #103099;
+	border-left: thin solid #103099;
+	text-align: justify;
+	margin-bottom: 10px;
+	padding-top: 0px;
+	padding-bottom: 3px;
+	padding-left: 0px;
+	padding-right: 0px;
+	font-size: 8pt;
+}
+
+div.boxheader {
+	background-color: #103099;
+	color: #ffffff;
+	text-align: center;
+	font-size: 10pt;
+	margin-bottom: 3px;
+}
+
+div.contentframe {
+	margin-left: 25px;
+	margin-top: 10px;
+	text-align: justify;
+}
+
+div.imagebox {
+	text-align: center;
+}
+
+div.footer {
+	background-color: #103099;
+	color: #ffffff;
+	font-family: verdana, sans-serif;
+	font-size: 6pt;
+	text-align: right;
+	margin-top: 30px;
+	padding-right: 3px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border-top: thin solid #000000;
+	border-bottom: thin solid #000000;
+}
+
+
+a.menu { 
+	text-decoration: none;
+	color: #103099;
+}
+
+a.menu:hover {
+	text-decoration: underline;
+}
+
+span.activepage {
+	background-color: #f0f070;
+}
+
+span.leader {
+	font-weight: bold;
+} 
+
+span.bullet {
+	font-family: verdana, sans serif;
+	font-size: 6pt;
+	color: #c0c000;
+	padding-left: 3px;
+}
