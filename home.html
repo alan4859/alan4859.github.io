@@ -1,55 +1,89 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <title>A LA N</title>
-    <link rel="stylesheet" type="text/css" href="./ace.css" media="screen">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  </head>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://java.sun.com/jstl/core"
+	  lang="pt-br">
+    <body>
+        
+<ui:composition template="template/template.xhtml">
+            
+	<ui:define name="titulo">
+		Loja Virtual
+	</ui:define>
 
-  <body>
-    <div class="header" id="header">
-      A L A N
-    </div>
+	<ui:define name="conteudo">
+	 <div id="products">
+      <ui:repeat value="#{lojaController.todosProdutos}" var="item"
+      size="5">
+		<div>
+	   		<h:panelGrid columns="2" cellpadding="2">
+				<h:graphicImage value="/thumbs/#{item.imagem}"/>
+				<h:panelGrid columns="1">
+			    <h:panelGroup>
+			      <h:outputText value="#{item.prodNome}" styleClass="title">
+			      </h:outputText>
+			    </h:panelGroup>
+			    <h:panelGroup>
+			      <h:outputText value="#{item.descPeq}" styleClass="text">
+			      </h:outputText>
+			    </h:panelGroup>
+			 
+			    <h:panelGroup>
+			      <h:outputText 
+			      		value="#{item.desconto > 0 ? 'Lista:':'Preço:'}" 
+			      		styleClass="text"/>
+			      <h:outputText value="#{item.preco}"  
+			      		styleClass="#{item.desconto > 0 ? 'listprice':'text'}">
+				    <f:convertNumber type="currency"/>
+			      </h:outputText>
+			    </h:panelGroup>
+			    <h:panelGroup rendered="#{item.desconto>0}">
+			      <h:outputText value="Preço:" styleClass="text"/>
+			      <h:outputText 
+			      		value="#{item.preco-(item.preco*item.desconto)/100}"  
+			      		styleClass="price">
+				    <f:convertNumber type="currency"/>
+			      </h:outputText>
+			    </h:panelGroup>
+			     <h:panelGroup rendered="#{item.desconto>0}">
+			      <h:outputText value="Economize:" styleClass="text"/>
+			      <h:outputText 
+			      		value="#{(item.preco*item.desconto)/100}"  
+			      		styleClass="price">
+				    <f:convertNumber type="currency"/>
+			      </h:outputText>
+			    </h:panelGroup>
+			    <h:panelGroup>
+			      <h:outputText value="Categoria:" styleClass="text"/>
+			      <h:outputText 
+			      		value="#{item.cat.catNome}" 
+			      		styleClass="text"/> 
+			    </h:panelGroup>
+ 
+				<h:outputLink  value="detalhes.jsf?id=#{item.id}">
+					<h:outputText 
+						value="Mais detalhes aqui"  
+						styleClass="text" />
+				</h:outputLink>
+				<h:commandLink 
+						action="#{carrinhoController.adicionarAoCarrinho}">
+				  <h:outputText 
+				  		value="Adicionar ao carrinho"  
+				  		styleClass="text"/>
+				  <f:param name="id" value="#{item.id}"/>
 
-    <div class="main" id="main">
-      <table cellpadding="0" cellspacing="0" border="0" id="layout" width="90%">
-        <tr>
-          <td width="20%" valign="top">
-            <div class="menubox" id="menubox">
-              <div class="boxheader">
-                Menu
-              </div>
-              <span class="bullet">o</span> <a class="menu" href="#">menu item 2</a><br>
-              <span class="bullet">o</span> <a class="menu" href="#">menu item 3</a><br>
-              <span class="bullet">o</span> <a class="menu" href="#">menu item 4</a><br>
-              <span class="bullet">o</span> <a class="menu" href="#">menu item 5</a><br>
-              <span class="bullet">o</span> <a class="menu" href="#">menu item 6</a><br>
-            </div>
+				</h:commandLink> 
+			  </h:panelGrid>
+			</h:panelGrid>	
+		</div>
+	  </ui:repeat>   
+	 </div>  			
+	</ui:define>
 
-            <div class="linkbox" id="linkbox">
-              <div class="boxheader">
-                Links
-              </div>
-               <a  href="home.html" title="principal">principal</a><br>
-              <span class="bullet">o</span> <a class="menu" href="https://g1.globo.com/">g1.globo</a><br>
-              <span class="bullet">o</span> <a class="menu" href="#">Link Three</a><br>
-              <span class="bullet">o</span> <a class="menu" href="#">Link Four</a><br>
-              <span class="bullet">o</span> <a class="menu" href="#">Link Five</a><br>
-            </div>
-          </td>
-
-          <td width="80%" valign="top">
-            <div class="contentframe" id="contentframe">
-              <p><span class="leader">A L A N</span><br>
-              this is where your content goes, if I had any decent content of my own I'd use this design myself. as it is I'll just type enough here to show you where the margins are. this text here doesnt have a point size set in the css so that it can be resized by the browser for the sake of accessibility of the content.</p>
-            </div>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="footer">
-      footer information here
-    </div>
-  </body>
+</ui:composition>
+        
+    </body>
 </html>
