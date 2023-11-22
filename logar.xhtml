@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://java.sun.com/jstl/core"
+	  lang="pt-br">
+    <body>
+        
+        <ui:composition template="template/template.xhtml">
+            
+            <ui:define name="titulo">
+                Usuário Cadastrado
+            </ui:define>
+
+            <ui:define name="conteudo">
+    
+			   <div id="checkout">
+		            <fieldset>
+			            <legend>Meu Cadastro</legend> 
+		    	       <label jsfc="h:outputLabel" for="email">E-mail:</label>
+		
+		    	        <input jsfc="h:inputText" id="email" styleClass="field"
+		    	        	value="#{usuarioController.usuario.email}" required="true" 
+		    	        	validator="#{usuarioController.validaEmail}"
+		    	        	requiredMessage="E-mail obrigatório" />
+		    	        <span jsfc="h:message" styleClass="msg" for="email"></span>		
+			            <br />
+		    	        <label jsfc="h:outputLabel" for="senha">Senha:</label>
+		    	        <input jsfc="h:inputSecret" id="senha" styleClass="field"
+		    	        	value="#{usuarioController.usuario.senha}"  required="true" 
+		    	        	requiredMessage="Senha obrigatória" />
+			            <span jsfc="h:message" for="senha" styleClass="msg"></span>
+			            <br />
+			            <span jsfc="h:messages" globalOnly="true"></span>
+			            <br />
+			            <input jsfc="h:commandButton" type="submit" action="#{usuarioController.login}"
+			            	id="enviar" value="Logar"/>
+			            <input jsfc="h:commandButton" 
+			            	type="submit" action="#{usuarioController.novoUsuario}" 
+			            	immediate="true"
+			            	id="novo" value="Novo Usuário"/>	
+		            </fieldset>           
+			    </div>
+    
+    
+            </ui:define>
+
+        </ui:composition>
+        
+    </body>
+</html>
