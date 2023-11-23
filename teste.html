@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <meta name="generator" content="Matrix Y2K from van IJperen Software Inc. - http://www.crystalfibers.com">
+</head>
+<body>
+          <div id="corpo-loja">
+          	<aside class="banner">
+          		<img src="<?php echo pg ?>/imagens/banner-meio.png">
+</body>   	</aside>
+</html>
+          	<section class="categorias">
+<!-- ** fi		<h2 class="fundo_azul"> Categorias</h2>le created on 23/11/2023 11:49:50 ** -->
+<!-- ** fi		le created by Matrix Y2K 2004 X - visit us online @ http://www.crystalfibers.com -->
+          		<nav>
+          			<ul>
+          				<?php include "sidebar.php" ?>
+          		</nav>
+          	
+          	</section>
+          	
+          	<div id="lado-direito">
+          		<h3 class="titulo fundo_azul"> lista de produtos </h3>
+          		<section class="vitrine">
+          		<?php 
+          					$sql = "SELECT * FROM categoria LIMIT 0,3 ";
+          					$total = $categoria->totalRegistros($sql);
+          					for($i=0;$i<$total;$i++){
+          						$categoria-> verCategorias($sql,$i);
+          						$idcat = $categoria->getId();
+          				?>
+          			<h2> <?php echo $categoria->getCategoria()?> </h2>
+          				<ul>
+          					<?php 
+          							$produto->listarProdutos("SELECT c.*, p.* FROM categoria c,  produto p WHERE c.id_categoria=p.id_categoria and p.id_categoria = '$idcat'");
+          					?>
+          				</ul>
+          			<?php } ?>
+          		</section>
+          	</div>
+          	
+          </div>
