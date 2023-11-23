@@ -1,102 +1,39 @@
-<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-
-<html>
+<DOCTYPE html>
+<html lang"pt-BR">
 <head>
-  <title></title>
-  
- </body>
-	<ui:define name="titulo">
-		Carrinho de compras
-	<?php
-	
-	$id_pedido = $_SESSION["id_pedido_curso"];
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja virtual</title>
+    </head>
+    <body>
+        <h1>Produtos em promoção</h1>
+        <h2>Informaticament</h2>
 
-	if ($id_pedido!=""){
-?>
+        <div>
+            <h3>
+                Notbook Lenovo Ideapad S145 8º Intel Core I5 8GB 1TB HB 15,6" W10 Prata
+            </h3>
+            <p> R$ 3 500,00</p>
 
-<div id="base-carrinho">
-		<div class="dados-carrinho">
-	<span> para excluir coloque a quantidade zero e clique em alterar </span>
-		<form name="frm_carrinho" action="<?php echo pg ?>/op_carrinho.php" method="post">
-		<table cellpadding="0" cellspacing="0" border="1">
-			<thead>
-				<tr>
-					<th>Descrição do produto </th>
-					<th>Quantidade </th>
-					<th>Preço unitário </th>
-					<th>Subtotal </th>
-					<th>Atualizar </th>
-				</tr>
-			</thead>
-			
-			<tbody>
-			<?php
-				$sql= "SELECT c.*, p.* FROM carrinho c, produto p where c.id_produto = p.id_produto and id_pedido = '$id_pedido'";
-				$totalReg = $carrinho->totalRegistros($sql);
-				$valorTotal = 0;
-					for($i=0;$i<$totalReg;$i++){
-						$carrinho -> verCarrinho($sql, $i);
-						$subtotal = $carrinho->getPreco() * $carrinho->getQtde();
-						$valorTotal += $subtotal; 
-						$codprod[$i] = $carrinho->getIdProduto();
-						
-			
-			?>
-				<tr>
-					<td> 
-						<img src="<?php echo pg ?>/admin/fotos/<?php echo $carrinho->getImagemProduto()?>"alt="Curso de Firebird" width="92" height="139"> 
-						<strong> <?php echo $carrinho->getTituloProduto(); ?>  </strong>
-					</td>
-					<td> <input type="number" id="alterar" name="codprod[<?php echo $i?>][QTDE]" value="<?php echo $carrinho->getQtde(); ?>" size="3" maxlength="3" min="0" max = "100" step="1" />  </td>
-					<td><?php echo "R$ " .number_format($carrinho->getValor(),2,',','.'); ?> </td>
-					<td> <?php echo "R$ " .number_format($subtotal,2,',','.'); ?> </td>
-					
-					
-					<td> 
-						<input type="hidden" name="acao" value="ALTERAR" />
-						<input type="hidden" name="codprod[<?php echo $i?>][IDPRODUTO]" value="<?php echo $carrinho->getIdProduto(); ?>" />
-						<input type="submit" name="Alterar" value="Alterar" /> 
-					</td>		
-				</tr>
-				
-				
-				<?php } ?>
-				<tr>
-					<td colspan="5"> Valor total: <?php echo "R$ " .number_format($valorTotal,2,',','.'); ?> </td> 
-				</tr>
-			</tbody>
-		</table>
-	</form>
-	
-	
-	<div id="linha">
-		<a href="<?php echo pg."/finaliza"; ?>"><img src="<?php echo pg ?>/imagens/finalizar-compra.png"></a><a href="<?php echo pg; ?>"><img src="<?php echo pg ?>/imagens/continuar-comprando.png"></a>
-	</div>
-	</div>
-	
-	<div id="sugestao2">	
-			<h3 class=" fundo_azul"> Sugestões de compra </h3>
-			<ul>
-				<?php 
-							$produto->listarProdutos("SELECT c.*, p.* FROM categoria c,  produto p WHERE c.id_categoria=p.id_categoria and p.id_categoria in (SELECT p.id_categoria FROM produto p, pedido pe, carrinho c WHERE p.id_produto = c.id_produto AND pe.id_pedido=c.id_pedido AND c.id_pedido = '$id_pedido ') order by p.id_produto DESC LIMIT 0, 10");
-				?>	
-			
-			
-			</ul>
-			
-			</div>
-		</div>
-<?php } else{ ?>
-	<p> Não existe nenhum item no seu carrinho de compras </p>
-<?php } ?>
+            <img src="computador.jpg" alt="Notbook Lenovo Ideapad S145" 
+            title="Notbook Lenovo"
 
-   
-</html>
+            <p> teste</p>
 
-</head>
-<body>
+                <a heref="http://lista.mercadolivre.com.br"
+                    target="_blank" > Comprar</a>
+            </div>
 
+            <div>
+                <h3>Computador desktop Completo</h3>
+                <p> R$ 2 500,00</p>
 
-
-</body>
+                <img src="desktop.jpg" alt="Computador Desktop Completo"
+                    title="Computador Desktop">
+                    <p>Já vem com Monitor LED HDMI Intel Core i5 8GB HD 500GB
+                        com caixas de som mouse e teclado EasyPC Standard Plus. </p>
+                    <a href="http//lista.mercadolivre.com.br"
+                        target="_blank">Comprar</a>
+                    </div>
+    </body>
 </html>
